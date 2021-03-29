@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Abril Fatface', cursive;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flex-container > form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        input {
+            font-family: 'Abril Fatface', cursive;
+            text-align: center;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 30px;
+        }
+
+        h1 {
+            font-size: 72px;
+        }
+    </style>
+</head>
+<body>
+<section class="flex-container">
+    <h1>Theather live</h1>
+    <form>
+        <input type="text" id="loginCode" name="loginCode" placeholder="Vul hier uw code in"><br>
+        <input type="submit" value="submit">
+    </form>
+</section>
+</body>
+</html>
