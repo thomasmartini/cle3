@@ -1,0 +1,86 @@
+body, html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Abril Fatface', cursive;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    /*background-image: linear-gradient(to right, red , yellow);*/
+}
+
+.flex-container-main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    /*background-image: linear-gradient(to right, red , yellow);*/
+}
+
+
+.flex-container > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input {
+    font-family: 'Abril Fatface', cursive;
+}
+
+.flex-container > form > input {
+    font-family: 'Abril Fatface', cursive;
+    text-align: center;
+    padding: 12px;
+    font-size: 30px;
+}
+
+h1 {
+    font-size: 72px;
+}
+
+.info {
+    text-align: center;
+    background-color: grey;
+    font-size: 30px;
+}
+
+.likeButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.chat {
+    width: 90%;
+    height: 33%;
+}
+
+.chatMessages {
+    background-color: grey;
+    height: 90%;
+}
+
+.chatInput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#chatMessage {
+    width: 100%;
+}
