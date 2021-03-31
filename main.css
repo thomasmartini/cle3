@@ -29,7 +29,6 @@ body {
     /*background-image: linear-gradient(to right, red , yellow);*/
 }
 
-
 .flex-container > form {
     display: flex;
     flex-direction: column;
@@ -83,4 +82,8 @@ h1 {
 
 #chatMessage {
     width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+    .chatMessages {font-size: 25px;}
 }
