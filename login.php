@@ -1,16 +1,31 @@
-<!DOCTYPE html>
 <?php
 session_start();
 /** @var mysqli $db */
 require_once "backend.php";
-if (isset($_POST["submit"])){
-    $toegangsCode = mysqli_escape_string($db, $_POST['toegangscode']);
 
-    "SELECT showNaam 
-    FROM login
-    WHERE toegangscode = '$toegangsCode' ";
+if (isset($_POST['submit'])) {
+    //Retrieve values (email safe for query)
+    $code = mysqli_escape_string($db, $_POST['wachtwoord']);
+    $password = $_POST['wachtwoord'];
+
+    //Get password & name from DB
+    $query = "SELECT *
+              FROM shows
+              WHERE wachtwoord = '$code'";
+    $result = mysqli_query($db, $query) or die('Error: ' . $query);
+    $user = mysqli_fetch_assoc($result);
+
+//if password is correct, redirect to main page
+    if ($user) {
+        $_SESSION['loggedInUser'] = [
+            'wachtwoord' => $user['wachtwoord'],
+        ];
+        header("Location: main.php");
+        exit;
+    }
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,10 +37,9 @@ if (isset($_POST["submit"])){
 <body>
 <div class="flex-container">
     <h1>Theather live</h1>
-    <form>
-        <input type="text" id="loginCode" name="loginCode" placeholder="Vul hier uw inlog code in"><br>
-        <input type="text" id="chatName" name="chatName" placeholder="Vul hier een naam in"><br>
-        <input type="submit" value="deelnemen">
+    <form action = "" method="POST">
+        <input type="text" id="wachtwoord" name="wachtwoord" placeholder="Vul hier uw inlog code in"><br>
+        <input type="submit" name="submit" value="deelnemen">
     </form>
 </div>
 </body>

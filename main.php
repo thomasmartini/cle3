@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <?php
-require_once "backend.php"
+session_start();
+if (!isset($_SESSION['loggedInUser'])) {
+    header('Location: login.php');
+    exit;
+}
+/** @var mysqli $db */
+require_once "backend.php";
+$loggedInUser = $_SESSION['loggedInUser'];
+$wachtwoord = $loggedInUser['wachtwoord'];
+//Get the result set from the database with a SQL query
+$query = "SELECT *
+          FROM shows
+          WHERE wachtwoord = '$wachtwoord' ";
+$result = mysqli_query($db, $query);
+//Loop through the result to create a custom array
+$show = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $show[] = $row;
+}
+
+//Close connection
+mysqli_close($db);
 ?>
 <html lang="en">
 <head>
@@ -13,7 +34,12 @@ require_once "backend.php"
 <body>
 <div class="flex-container-main">
     <section class="info">
-        U kijkt nu naar:<br>(show)<br><br>
+        U kijkt nu naar:<br><?php
+        foreach ($show as $shows) {
+            echo $shows['show_naam'];
+        }
+
+        ?><br><br>
         Als er meer dan de helft van de mensen op een van de knoppen drukt dan wordt er een geluid afgespeeld
     </section>
     <section class="likeButtons">
